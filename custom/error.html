@@ -1,0 +1,26 @@
+{% extends "templates/error.html" %}
+
+{% block h1_error %}
+{% if status_code == 403 %}
+{{ super() }}
+<p>
+  <strong>It looks like you need to request an account!</strong> 
+ Request an account
+  <a href="mailto:jupyterteam@customer.edu">sending us</a> an email 
+</p>
+{% elif status_code == 400 %}
+{{ super() }}
+<p>
+  Please login again from <a href="https://analyticsworkspace.customor.com">the home page</a>.
+</p>
+{% elif status_code == 500 %}
+{{ super() }}
+<p>
+  Oh no! Something is wrong on our end. If this problem persists, please 
+  <a href="mailto:jupyterteam@customer.edu">email us</a>.
+</p>
+{% else %}
+{{ super() }}
+{% endif %}
+
+{% endblock h1_error %}
